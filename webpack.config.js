@@ -2,14 +2,15 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
 
-var entry = {};
-entry["bh-grid"] = ["./src/index.js"];
-
 module.exports = {
-  entry: entry,
+  entry: {
+    'bh-grid': './index.js',
+    'demo': './examples/scripts/main.js'
+  },
 
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名
+    extensions: ['', '.js', '.jsx', '.json', '.scss']
   },
 
   output: {
@@ -20,12 +21,12 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: [/\.jsx$/, /\.js$/],
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query:{
           "compact": false,
-          "presets": ["react", "es2015", "stage-0", "stage-1", "stage-2", "stage-3"]
+          "presets" : ['es2015','react']
         }
       }, 
       {
@@ -35,7 +36,13 @@ module.exports = {
       {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract(
-            'style-loader',"css-loader!less-loader"
+            'style-loader',"css-loader!less-loader?sourceMap"
+        )
+      }, 
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract(
+            'style-loader',"css-loader!sass-loader?sourceMap"
         )
       }, 
       {
@@ -43,12 +50,12 @@ module.exports = {
         loader: ExtractTextPlugin.extract(
             'style-loader', 'css-loader'
         )
-      },
-      {test: /\.scss$/, loader: 'style!css!sass?sourceMap'}
+      }
     ]
   },
 
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin('common.js'),
     new ExtractTextPlugin('[name].css')
   ],
 
