@@ -1,12 +1,11 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
+var glob_entries = require('webpack-glob-entries');
 
 module.exports = {
-  entry: {
-    'bh-grid': './index.js',
-    'demo': './examples/scripts/main.js'
-  },
+  entry: glob_entries('./examples/scripts/*.js'), //demo演示
+  //entry: glob_entries('./src/**/*.js'),//发布时使用，可以将组建独立打包
 
   resolve: {
     //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名
