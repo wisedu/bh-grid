@@ -1,6 +1,7 @@
 import React from 'react';
+import Pagination from 'rc-pagination';
 
-var Pagination = React.createClass({
+var BHPagination = React.createClass({
     render: function(){
         return (
             <div className="clearfix b-content-paging" >
@@ -40,4 +41,4 @@ var Pagination = React.createClass({
     }
 });
 
-module.exports = Pagination;
+module.exports = BHPagination;

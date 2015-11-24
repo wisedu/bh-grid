@@ -1,5 +1,6 @@
-import React from 'react'; //es6模块引入方式
-var Table = React.createClass({
+import React from 'react';
+import {Table, Column, Cell} from 'fixed-data-table';
+var BHTable = React.createClass({
     render: function(){
         return (
             <table className="bh-table bh-table-cross-highlight">
@@ -156,4 +157,4 @@ var Table = React.createClass({
     }
 });
 
-export default Table;
+export default BHTable;

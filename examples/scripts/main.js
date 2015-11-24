@@ -14,9 +14,9 @@ $("table").on("click","input[type=checkbox]", function(){
     }       
 });
 
-import React from 'react';
-var ReactDOM = require('react-dom');
-var Pagination = require('../../src/bh-pagination');
+import React from 'react';//es6 模块引入方式
+var ReactDOM = require('react-dom');//或者使用webpack提供的 commonJS模块引入方式
+import Pagination from '../../src/bh-pagination';
 import Table from '../../src/bh-table';
 
 ReactDOM.render(
@@ -28,3 +28,5 @@ ReactDOM.render(
     <Table></Table>, 
     document.getElementById('tab_lv2_1')
 );
+
+
