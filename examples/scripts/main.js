@@ -1,0 +1,15 @@
+$("table").on("click","input[type=checkbox]", function(){
+    var $item = $(this);
+    if($item.hasClass("allCheckboxFlag")){
+        if ($item.attr('data-select')=='ture') {
+            $("table").find("input[name='oper']").removeAttr("checked");
+            $item.attr('data-select','false');
+        }else{
+            $("table").find("input[name='oper']").attr("checked", 'checked');
+            $item.attr('data-select','ture');
+        }
+    }else if ($item.attr('checked')) {
+        $item.removeAttr("checked");
+        $('.allCheckboxFlag').attr('data-select','false').removeAttr("checked");
+    }       
+});
