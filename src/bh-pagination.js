@@ -1,12 +1,17 @@
 import React from 'react';
 import Pagination from 'rc-pagination';
 import Select from 'rc-select';
-require('rc-pagination/assets/index.css');
 require('rc-select/assets/index.css');
-require('./bh-pagination.css');
+require('./bh-pagination.less');
 
-export default class BHPagination extends React.Component {
-  render() {
-    return <Pagination selectComponentClass={Select} {...this.props}/>;
+const prefixCls = 'bhr-pagination';
+export default React.createClass({
+  render: function() {
+    let className = this.props.className;
+    if (this.props.size === 'small') {
+      className += ' mini';
+    }
+    return <Pagination selectComponentClass={Select} 
+        {...this.props} prefixCls={prefixCls} className={className}/>;
   }
-}
+});
