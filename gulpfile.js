@@ -6,7 +6,9 @@ var livereload = require('gulp-livereload');
 var connect = require('gulp-connect');
 
 var paths = {
-  scripts: ['./index.js', './src/**/*.js', './examples/**/*.js']
+  scripts: ['./index.js', './src/**/*.js', './examples/**/*.js'],
+  styles: ['./src/**/*.css', './src/**/*.less', '.src/**/*.scss'],
+  html: ['./examples/index.html']
 };
 
 gulp.task('clean', function(callback) {
@@ -16,6 +18,8 @@ gulp.task('clean', function(callback) {
 gulp.task('watch', function() {
   livereload.listen();
   gulp.watch(paths.scripts, ['build']);
+  gulp.watch(paths.styles, ['build']);
+  gulp.watch(paths.html, ['build']);
 });
 
 gulp.task('scripts', function(){
