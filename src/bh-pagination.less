@@ -259,17 +259,14 @@
 
 /* fix select style */
 .@{pagination-prefix-cls}{
-    & .rc-select-dropdown-menu-item{
-        cursor: pointer;
-    }
     & .rc-select-selection{
         border-radius: 2px !important;
     }
     &.mini .rc-select-selection--single {
-    height: 22px;
-    .rc-select-selection__rendered {
-       line-height: 20px;
-    }
+      height: 22px;
+      .rc-select-selection__rendered {
+         line-height: 20px;
+      }
     }
     &.mini .rc-select-selection--multiple {
       min-height: 22px;
@@ -292,5 +289,8 @@
         height: 22px;
         top: -1px;
     }
+}
+.rc-select-dropdown-menu-item{
+  cursor: pointer !important;
 }
 
