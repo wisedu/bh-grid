@@ -20,7 +20,7 @@ import Pagination from '../../src/bh-pagination';
 import Table from '../../src/bh-table';
 
 ReactDOM.render(
-    <Pagination></Pagination>, 
+    <Pagination showQuickJumper={true} showSizeChanger={true} total={500} onChange={onChange} onShowSizeChange={onShowSizeChange} />, 
     document.getElementById('paging-wrapper')
 );
 
@@ -29,4 +29,13 @@ ReactDOM.render(
     document.getElementById('tab_lv2_1')
 );
 
+
+function onShowSizeChange(current, pageSize) {
+  console.log(current)
+  console.log(pageSize)
+}
+
+function onChange(key) {
+  console.log(key)
+}
 

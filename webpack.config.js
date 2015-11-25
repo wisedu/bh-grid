@@ -9,7 +9,7 @@ module.exports = {
 
   resolve: {
     //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名
-    extensions: ['', '.js', '.jsx', '.json', '.scss']
+    extensions: ['', '.js', '.jsx', '.json', '.scss', '.css']
   },
 
   output: {
@@ -53,6 +53,7 @@ module.exports = {
     ]
   },
 
+  //发布打包组建时需要注释CommonsChunkPlugin插件，使得每个插件能完整独立可用
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('common.js'),
     new ExtractTextPlugin('[name].css')
