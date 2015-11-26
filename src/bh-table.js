@@ -3,8 +3,44 @@ import Table from 'rc-table';
 import reqwest from 'reqwest';
 import Pagination from './bh-pagination';
 import {Spin, Icon, Checkbox} from 'antd';
+require('./bh-table.scss');
 
-var BHTable = React.createClass({
+function noop(){
+}
+
+function defaultResolve(data){
+    return data || [];
+}
+
+class DataSource {
+    init(config){
+        this.config = config;
+        this.url = config.url || '';
+        this.resolve = config.resolve || defaultResolve;
+        this.getParams = config.getParams || noop;
+        this.getPagination = config.getPagination || noop;
+        this.headers = config.headers || {};
+        this.data = config.data || {};
+    }
+    constructor(config){
+        if(config){
+            this.init(config);
+        }
+    }
+    clone(config = {}){
+        return new DataSource(Object.assign({}, this.config, config));
+    }
+}
+
+let BHTable = React.createClass({
+    getInitialState: function() {
+        return {
+            selectedRowKeys: [],
+            data: [],
+            dataSource: this.props.dataSource,
+            loading: this.props.loading
+        };
+    },
     render: function(){
         return (
             <table className="bh-table bh-table-cross-highlight">

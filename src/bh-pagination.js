@@ -2,7 +2,7 @@ import React from 'react';
 import Pagination from 'rc-pagination';
 import Select from 'rc-select';
 require('rc-select/assets/index.css');
-require('./bh-pagination.less');
+require('./bh-pagination.scss');
 
 const prefixCls = 'bhr-pagination';
 export default React.createClass({
