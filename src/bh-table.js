@@ -1,5 +1,9 @@
 import React from 'react';
-import {Table, Column, Cell} from 'fixed-data-table';
+import Table from 'rc-table';
+import reqwest from 'reqwest';
+import Pagination from './bh-pagination';
+import {Spin, Icon, Checkbox} from 'antd';
+
 var BHTable = React.createClass({
     render: function(){
         return (

@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "grid component",
   "dependencies": {
+    "antd": "^0.10.1",
     "fixed-data-table": "^0.6.0",
     "rc-pagination": "^1.2.2",
     "rc-select": "^5.2.1",
     "rc-table": "^3.6.2",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "reqwest": "^2.0.5"
   },
   "devDependencies": {
     "babel": "^6.1.18",
