@@ -13,7 +13,7 @@ module.exports = {
   },
 
   output: {
-    path: path.join(process.cwd(), 'dist'),
+    //path: path.join(process.cwd(), 'dist'),// 可以注释掉，使用gulp中定义的dest
     filename: '[name].js'
   },
 
