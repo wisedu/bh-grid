@@ -16,26 +16,63 @@ $("table").on("click","input[type=checkbox]", function(){
 
 import React from 'react';//es6 模块引入方式
 var ReactDOM = require('react-dom');//或者使用webpack提供的 commonJS模块引入方式
-import Pagination from '../../src/bh-pagination';
-import Table from '../../src/bh-table';
+import Pagination from '../../src/pagination/bh-pagination';
+import Table from '../../src/table/bh-table';
 
-ReactDOM.render(
-    <Pagination showQuickJumper={true} showSizeChanger={true} total={500} onChange={onChange} onShowSizeChange={onShowSizeChange}/>, 
-    document.getElementById('paging-wrapper')
-);
+// ReactDOM.render(
+//     <Pagination showQuickJumper={true} showSizeChanger={true} total={500} onChange={onChange} onShowSizeChange={onShowSizeChange} pageSizeOptions={['10', '20', '50', '100']}/>, 
+//     document.getElementById('paging-wrapper')
+// );
 
-ReactDOM.render(
-    <Table></Table>, 
-    document.getElementById('tab_lv2_1')
-);
+// function onShowSizeChange(current, pageSize) {
+//   console.log(current, pageSize);
+// }
+// function onChange(){
 
+// }
 
-function onShowSizeChange(current, pageSize) {
-  console.log(current)
-  console.log(pageSize)
+const columns = [{
+  title: '姓名',
+  dataIndex: 'name',
+  render: function(text) {
+    return <a href="#">{text}</a>;
+  }
+}, {
+  title: '年龄',
+  dataIndex: 'age',
+  sorter: function(a, b) {
+    return a.age - b.age;
+  }
+}, {
+  title: '住址',
+  dataIndex: 'address'
+}];
+
+const data = [];
+for (let i = 0; i < 46; i++) {
+  data.push({
+    key: i,
+    name: '李大嘴' + i,
+    age: 32,
+    address: '西湖区湖底公园' + i + '号'
+  });
 }
 
-function onChange(key) {
-  console.log(key)
-}
+const pagination = {
+  total: data.length,
+  current: 2,
+  showSizeChanger: true,
+  pageSizeOptions: ['10', '20', '50', '100']
+};
+const rowSelection = {
+  onSelect: function(record, selected, selectedRows) {
+    console.log(record, selected, selectedRows);
+  },
+  onSelectAll: function(selected, selectedRows) {
+    console.log(selected, selectedRows);
+  }
+};
+
+ReactDOM.render(<Table rowSelection={rowSelection} columns={columns} dataSource={data} pagination={pagination} bordered/>
+, document.getElementById('tab_lv2_1'));
 

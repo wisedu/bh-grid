@@ -5,11 +5,11 @@ var del = require('del');
 var livereload = require('gulp-livereload');
 var connect = require('gulp-connect');
 
-var componentsJs = './src/**/*.js';
-var examplesJs = './examples/**/*.js';
+var componentsJS = './src/**/*.js';
+var examplesJS = './examples/**/*.js';
 
 var paths = {
-  scripts: [componentsJs, examplesJs],
+  scripts: [componentsJS, examplesJS],
   styles: ['./src/**/*.css', './src/**/*.less', '.src/**/*.scss'],
   html: ['./examples/index.html']
 };
@@ -26,7 +26,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('scripts', function(){
-    gulp.src(examplesJs)//此处随便定义一个值，最终会使用webpack中的entry，另外也可以将webpack.config.js中的entry注释掉，在此指定src文件。
+    gulp.src(examplesJS)//此处随便定义一个值，最终会使用webpack中的entry，另外也可以将webpack.config.js中的entry注释掉，在此指定src文件。
         .pipe(gulpWebpack(webpackConfig))
         .pipe(gulp.dest('./dist/'))
         .pipe(livereload());
